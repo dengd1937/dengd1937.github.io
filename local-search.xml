@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Linux 基础知识</title>
+    <link href="/2022/09/24/basic-linux-command/"/>
+    <url>/2022/09/24/basic-linux-command/</url>
+    
+    <content type="html"><![CDATA[<p>介绍Linux相关的基础知识，简单描述了Linux基础概率以及一些常用命令，如：ls、cd、mkdir、vi、cat、cp等。</p><span id="more"></span><h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><ol><li><p>Linux系统与Windows一样有着文件管理，文件的路径又分绝对路径和相对路径。绝对路径是以&#x2F;开始，例如&#x2F;usr&#x2F;local，而相对路径不以&#x2F;开始，例如..&#x2F;，这个就是当前目录的上一层</p></li><li><p>在Linux系统中，不同用户有着不同的<strong>家目录</strong>（也就是不同用户登陆上Linux初始位置）。如果你以root账号登陆，家目录就是&#x2F;root&#x2F;，如果你以普通用户xxx登陆，那么系统默认的家目录就是&#x2F;home&#x2F;xxx&#x2F;，当然也可以指定普通用户的家目录为其他目录，在后续文章会补充</p></li></ol><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul><li><p><em>pwd</em>，查看当前目录的绝对路径，显示是从&#x2F;开始</p></li><li><p><em>ls</em>，查看当前路径下的文件或文件夹</p><blockquote><p>ls &#x2F; 只显示该目录下的文件或文件夹的名称<br>ls -l &#x2F; 显示该目录下的文件或文件夹的明细信息，ls -l &#x3D;&#x3D;&gt;ll，更多用ll代替<br>ll -h 查看文件大小，只能看文件不能看文件夹，如果想看文件夹大小，请使用du -sh 文件或文件夹名<br>ll -rt 给文件或文件夹以时间排序，可以找出最新的文件或文件夹</p></blockquote></li><li><p><em>cd</em>，切换目录</p><blockquote><p>cd -    回到上一次目录<br>cd ..&#x2F;  回退上一层目录（相对路径）<br>cd ..&#x2F;..&#x2F; 回退2个目录（相对路径）</p></blockquote></li><li><p><em>mkdir</em>，创建文件夹</p><blockquote><p>mkdir xxx 只能创建1个<br>mkdir -p xxx&#x2F;1&#x2F;2 级联创建文件夹<br>mkdir 4 5 6 并行创建4 5 6 文件夹</p></blockquote></li><li><p><em>cp</em>，复制拷贝文件&#x2F;文件夹</p><blockquote><p>cp -r xx xx&#x2F;     文件夹拷贝 需要-r参数</p></blockquote></li><li><p><em>mv</em>，移动或改名文件&#x2F;文件夹</p><blockquote><p>mv test.log test                移动文件到新的地方 名称不变<br>mv test1.log  test&#x2F;test123.log 移动文件到新的地方 名称变<br>mv test1 test  移动文件夹</p></blockquote></li><li><p><em>cat&#x2F;more&#x2F;less</em>，查看文件内容</p><blockquote><p>cat  文件内容一下子全部显示 适用字节内容较少<br> 查看日志的内容ERROR 定位错误<br>假如文件超大 10m   发送给window电脑，通过editplus 全局搜索<br>假如文件假如100m+（grep -C 是指搜索”ERROR”前后10行）<br>cat install.log | grep -C 10 “ERROR”<br>假如 ERROR筛选的结果 特多(&gt; 重定向覆盖输出到文件，&gt;&gt; 追加)<br>cat install.log | grep -C 10 “ERROR” &gt; error.log<br>more 文件内容一页一页的往下翻 按空格键往下<br>回退不了 按q退出   适用字节内容稍多的<br>less 文件内容 一行行 按箭头上下  按q退出</p></blockquote></li><li><p><em>tail</em>，实时查看</p><blockquote><p>实际工作中，对于日志总会面临日志过大的问题，一般使用切割法。<br>到达某个数值，mv xxx.log xxx.log1，然后再touch xxx.log。<br>推荐使用 tail -F xxx.log，-F&#x3D;-f+retry，-f 不够强大，文件只要被移走，就算新的一模一样，也不会实时监控</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs SHELL">[root@hadoop001 ~]# tail -F xxx.log <br>123<br>4<br>tail: `xxx.log&#x27; has become inaccessible: No such file or directory<br>tail: `xxx.log&#x27; has appeared;  following end of new file<br>5<br></code></pre></td></tr></table></figure></li></ul><blockquote><p>但是如果你要看以倒数50行开始的日志，只能是tail -50f xxx.log</p></blockquote><ul><li><p><em>help</em>，命令帮助</p><blockquote><p>命令 –help<br>例如:<br>[root@hadoop001 ~]# ls –help<br>Usage: ls [OPTION]… [FILE]…<br>[]代表可以省略</p></blockquote></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2022/09/24/hello-world/"/>
+    <url>/2022/09/24/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
